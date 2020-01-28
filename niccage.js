@@ -8,5 +8,5 @@ const images = [
 chrome.tabs.onUpdated.addListener(function(id, info, tab) { 
 	var image = images[Math.floor(Math.random()*images.length)];
 	console.log(image)
-	chrome.tabs.executeScript(null, {code: "var images = document.getElementsByTagName('img'); console.log(images.length); for (var i=0; i < images.length; ++i) {images[i].src = 'data:image/png;base64, '" + image + "'}", "runAt": "document_end"})	
+	chrome.tabs.executeScript(null, {code: `var images = document.getElementsByTagName('img'); console.log(images.length); for (var i=0; i < images.length; ++i) {images[i].src = 'data:image/png;base64, ${image}'}`, "runAt": "document_end"})	
 })
